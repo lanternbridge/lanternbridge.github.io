@@ -1,0 +1,36 @@
+---
+interface Step {
+  num: string;
+  kicker: { en: string; id: string };
+  title: { en: string; id: string };
+  body: { en: string; id: string };
+}
+interface Props { step: Step; }
+const { step } = Astro.props;
+---
+
+<div class="step reveal">
+  <div class="step-num">{step.num}</div>
+  <b>
+    <span class="txt-en">{step.kicker.en}</span>
+    <span class="txt-id">{step.kicker.id}</span>
+  </b>
+  <h3>
+    <span class="txt-en">{step.title.en}</span>
+    <span class="txt-id">{step.title.id}</span>
+  </h3>
+  <p>
+    <span class="txt-en">{step.body.en}</span>
+    <span class="txt-id">{step.body.id}</span>
+  </p>
+</div>
+
+<style>
+  .step { position: relative; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 26px 22px; transition: transform .25s ease, box-shadow .25s ease; }
+  .step:hover { transform: translateY(-4px); box-shadow: var(--shadow-sm); }
+  .step-num { font-size: 40px; font-weight: 600; color: var(--lantern-tint); line-height: 1; font-family: var(--font-head); }
+  .step b { display: block; font-size: 12px; letter-spacing: .14em; color: var(--emerald-dark); margin: 14px 0 6px; text-transform: uppercase; }
+  .step h3 { font-size: 19px; color: var(--navy); font-weight: 600; margin-bottom: 8px; }
+  .step p { font-size: 14px; color: var(--muted); }
+  [data-theme="dark"] .step { background: #11202f; }
+</style>
