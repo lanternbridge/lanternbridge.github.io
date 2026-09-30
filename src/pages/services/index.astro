@@ -1,0 +1,50 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import CTASection from '../../components/CTASection.astro';
+import { services } from '../../data/services.js';
+---
+
+<Layout
+  title="Services | Lantern Bridge — Education, Medical Travel, Sourcing & AI"
+  description="Four services across the Indonesia–China bridge: university admissions, medical travel coordination, factory sourcing, and AI-powered growth. Delivered by a bilingual, PhD-led team on the ground in China."
+>
+
+  <section class="page-head">
+    <div class="container">
+      <div class="kicker">
+        <span class="txt-en">What we do</span>
+        <span class="txt-id">Apa yang kami lakukan</span>
+      </div>
+      <h1>
+        <span class="txt-en">Four ways across the bridge.</span>
+        <span class="txt-id">Empat jalur penyeberangan.</span>
+      </h1>
+      <p class="lead">
+        <span class="txt-en">Each service is delivered end-to-end by our own team and verified partners — in Bahasa Indonesia, English or Mandarin. Pick the crossing that matches your goal.</span>
+        <span class="txt-id">Setiap layanan ditangani tuntas oleh tim kami dan mitra terverifikasi — dalam Bahasa Indonesia, Inggris, atau Mandarin. Pilih jalur yang sesuai dengan tujuan Anda.</span>
+      </p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="container">
+      <div class="services">
+        {services.map(service => <ServiceCard service={service} />)}
+      </div>
+    </div>
+  </section>
+
+  <CTASection />
+
+</Layout>
+
+<style>
+  .page-head { padding: 130px 0 60px; }
+  .lead { font-size: 17px; color: var(--muted); max-width: 640px; margin-top: 12px; }
+  .services { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+  @media (max-width: 760px) {
+    .page-head { padding: 118px 0 40px; }
+    .services { grid-template-columns: 1fr; }
+  }
+</style>
