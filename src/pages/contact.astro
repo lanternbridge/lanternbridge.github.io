@@ -1,0 +1,112 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CTASection from '../components/CTASection.astro';
+---
+
+<Layout
+  title="Contact | Lantern Bridge — Start a Conversation"
+  description="Studies, treatment, products or growth — tell us where you want to go. We reply within one business day, in Bahasa Indonesia or English."
+>
+
+  <section class="page-head">
+    <div class="container">
+      <div class="kicker">
+        <span class="txt-en">Get in touch</span>
+        <span class="txt-id">Hubungi kami</span>
+      </div>
+      <h1>
+        <span class="txt-en">Start a conversation.</span>
+        <span class="txt-id">Mulai percakapan.</span>
+      </h1>
+      <p class="lead">
+        <span class="txt-en">Tell us your goal — studies, treatment, products, or growth. We reply within one business day, in Bahasa Indonesia or English.</span>
+        <span class="txt-id">Ceritakan tujuan Anda — studi, pengobatan, produk, atau pertumbuhan. Kami membalas dalam satu hari kerja, dalam Bahasa Indonesia atau Inggris.</span>
+      </p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="container">
+      <div class="contact-grid">
+        <a class="contact-card" href="https://wa.me/6289669367988" target="_blank" rel="noopener noreferrer">
+          <div class="contact-card-icon" style="background:#e9f7ee;color:#1da851">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Z"/></svg>
+          </div>
+          <h3>WhatsApp</h3>
+          <p>
+            <span class="txt-en">Fastest way to reach us. Voice notes welcome.</span>
+            <span class="txt-id">Cara tercepat menghubungi kami. Pesan suara dipersilakan.</span>
+          </p>
+          <span class="contact-value">+62 896-6936-7988</span>
+        </a>
+
+        <a class="contact-card" href="mailto:ma@laiba.com">
+          <div class="contact-card-icon" style="background:#eef3ff;color:#1d4ed8">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+          </div>
+          <h3>Email</h3>
+          <p>
+            <span class="txt-en">Best for documents, contracts and detailed briefs.</span>
+            <span class="txt-id">Cocok untuk dokumen, kontrak, dan brief terperinci.</span>
+          </p>
+          <span class="contact-value">ma@laiba.com</span>
+        </a>
+      </div>
+
+      <div class="contact-meta reveal">
+        <div>
+          <strong>
+            <span class="txt-en">Average first reply</span>
+            <span class="txt-id">Rata-rata balasan pertama</span>
+          </strong>
+          <span>
+            <span class="txt-en">Under 6 working hours</span>
+            <span class="txt-id">Di bawah 6 jam kerja</span>
+          </span>
+        </div>
+        <div>
+          <strong>
+            <span class="txt-en">Languages</span>
+            <span class="txt-id">Bahasa</span>
+          </strong>
+          <span>Bahasa Indonesia · English · 中文</span>
+        </div>
+        <div>
+          <strong>
+            <span class="txt-en">Locations</span>
+            <span class="txt-id">Lokasi</span>
+          </strong>
+          <span>
+            <span class="txt-en">Jakarta + 5 Chinese hubs</span>
+            <span class="txt-id">Jakarta + 5 kota industri Tiongkok</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection />
+
+</Layout>
+
+<style>
+  .page-head { padding: 130px 0 40px; }
+  .lead { font-size: 17px; color: var(--muted); max-width: 640px; margin-top: 12px; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .contact-card { display: block; background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 32px 28px; transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+  .contact-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--line-strong); }
+  .contact-card-icon { width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center; margin-bottom: 18px; }
+  .contact-card h3 { font-size: 22px; color: var(--navy); font-weight: 600; margin-bottom: 8px; }
+  .contact-card p { font-size: 14px; color: var(--muted); }
+  .contact-value { display: block; margin-top: 16px; font-size: 15px; font-weight: 700; color: var(--emerald-dark); }
+  .contact-meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 42px; padding: 26px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); }
+  .contact-meta > div { display: flex; flex-direction: column; gap: 4px; }
+  .contact-meta strong { font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--emerald-dark); }
+  .contact-meta span { font-size: 14.5px; color: var(--ink-soft); font-weight: 500; }
+  [data-theme="dark"] .contact-card, [data-theme="dark"] .contact-meta { background: #11202f; }
+  @media (max-width: 760px) {
+    .page-head { padding: 118px 0 30px; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .contact-meta { grid-template-columns: 1fr; gap: 16px; }
+  }
+</style>
