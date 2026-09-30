@@ -1,0 +1,56 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TeamMember from '../components/TeamMember.astro';
+import CTASection from '../components/CTASection.astro';
+import { team } from '../data/team.js';
+
+// Base64 photos embedded directly in the repo (same images as the HTML version)
+// For simplicity in this build, we use the initials fallback only.
+// To add photos later, save them to /public/team/ and pass photoSrc to <TeamMember />.
+---
+
+<Layout
+  title="Our Team | Lantern Bridge — Founders & Leadership"
+  description="A founder who helped build China's internet, alongside two co-founders with doctorates earned inside China. Meet the team behind Lantern Bridge."
+>
+
+  <section class="page-head">
+    <div class="container">
+      <div class="kicker">
+        <span class="txt-en">Leadership</span>
+        <span class="txt-id">Pimpinan</span>
+      </div>
+      <h1>
+        <span class="txt-en">The people holding the lantern.</span>
+        <span class="txt-id">Para pemegang lentera.</span>
+      </h1>
+      <p class="lead">
+        <span class="txt-en">A founder who helped build China's internet, alongside two co-founders with doctorates earned inside China — one in business administration, one in Chinese philology.</span>
+        <span class="txt-id">Seorang pendiri yang turut membangun internet Tiongkok, bersama dua co-founder bergelar doktor dari Tiongkok — administrasi bisnis dan filologi Tiongkok.</span>
+      </p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="container">
+      <div class="team">
+        {team.map(member => <TeamMember member={member} />)}
+      </div>
+    </div>
+  </section>
+
+  <CTASection />
+
+</Layout>
+
+<style>
+  .page-head { padding: 130px 0 40px; }
+  .lead { font-size: 17px; color: var(--muted); max-width: 640px; margin-top: 12px; }
+  .team { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: stretch; }
+  @media (max-width: 1020px) {
+    .team { grid-template-columns: 1fr; max-width: 600px; margin: 0 auto; gap: 20px; }
+  }
+  @media (max-width: 760px) {
+    .page-head { padding: 118px 0 30px; }
+  }
+</style>
