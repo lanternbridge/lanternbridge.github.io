@@ -1,0 +1,93 @@
+---
+interface Member {
+  id: string;
+  initials: string;
+  name: string;
+  role: { en: string; id: string };
+  credential: { en: string; id: string };
+  credentialTone: 'gold' | 'default';
+  bio: { en: string; id: string };
+  tags: { en: string; id: string }[];
+  extended: { en: string; id: string };
+}
+interface Props {
+  member: Member;
+  photoSrc?: string;
+}
+const { member, photoSrc } = Astro.props;
+---
+
+<article class="person reveal">
+  <div class="person-top">
+    <div class="avatar" data-initials={member.initials}>
+      {photoSrc && <img src={photoSrc} alt={member.name} loading="lazy" decoding="async" />}
+    </div>
+  </div>
+  <div class="person-body">
+    <div class="role">
+      <span class="txt-en">{member.role.en}</span>
+      <span class="txt-id">{member.role.id}</span>
+    </div>
+    <h3>{member.name}</h3>
+    <div class="creds">
+      <span class={`cred ${member.credentialTone === 'gold' ? 'gold' : ''}`}>
+        <span class="txt-en">{member.credential.en}</span>
+        <span class="txt-id">{member.credential.id}</span>
+      </span>
+    </div>
+    <p class="bio">
+      <span class="txt-en">{member.bio.en}</span>
+      <span class="txt-id">{member.bio.id}</span>
+    </p>
+    <div class="tags">
+      {member.tags.map(t => (
+        <span class="tag">
+          <span class="txt-en">{t.en}</span>
+          <span class="txt-id">{t.id}</span>
+        </span>
+      ))}
+    </div>
+    <details>
+      <summary>
+        <span class="txt-en">View full profile</span>
+        <span class="txt-id">Lihat profil lengkap</span>
+      </summary>
+      <p>
+        <span class="txt-en">{member.extended.en}</span>
+        <span class="txt-id">{member.extended.id}</span>
+      </p>
+    </details>
+  </div>
+</article>
+
+<style>
+  .person { background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; display: flex; flex-direction: column; transition: transform .28s ease, box-shadow .28s ease; }
+  .person:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+  .person-top { height: 250px; position: relative; display: grid; place-items: center;
+    background: radial-gradient(circle at 50% 24%, rgba(78,140,200,.35), transparent 62%), linear-gradient(160deg, #0e2c4d, #081d36); }
+  .avatar { position: relative; width: 150px; height: 150px; border-radius: 50%; display: grid; place-items: center;
+    background: linear-gradient(145deg, #2a5f8f, #12325a);
+    box-shadow: 0 18px 40px rgba(4,15,28,.45), 0 0 0 5px rgba(255,255,255,.14); overflow: hidden; }
+  .avatar:before { content: attr(data-initials); font-family: var(--font-head); font-size: 44px; font-weight: 600; color: #fff; }
+  .avatar img { position: absolute; z-index: 1; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 22%; }
+  .person-body { padding: 26px; display: flex; flex-direction: column; flex: 1; }
+  .role { color: var(--emerald-dark); font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; }
+  .person h3 { font-size: 25px; color: var(--navy); font-weight: 600; margin: 8px 0 12px; line-height: 1.15; }
+  .creds { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+  .cred { display: inline-flex; align-items: center; font-size: 12px; font-weight: 700; color: var(--navy); background: var(--emerald-tint); border: 1px solid #cfe8dd; padding: 6px 11px; border-radius: 999px; }
+  .cred.gold { background: #faf3e3; border-color: #ecd9ae; color: #7c5f1c; }
+  .bio { color: var(--muted); font-size: 14.5px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 16px; }
+  .tag { font-size: 12px; font-weight: 700; color: var(--ink-soft); border: 1px solid var(--line); background: var(--bg-alt); padding: 6px 10px; border-radius: 999px; }
+  details { margin-top: 16px; border-top: 1px solid var(--line); padding-top: 14px; }
+  summary { cursor: pointer; font-weight: 700; font-size: 14px; color: var(--navy); list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 32px; }
+  summary::-webkit-details-marker { display: none; }
+  summary:after { content: "+"; color: var(--emerald-dark); font-weight: 800; font-size: 16px; }
+  details[open] summary:after { content: "–"; }
+  details p { padding-top: 10px; font-size: 14px; color: var(--muted); }
+  [data-theme="dark"] .person { background: #11202f; }
+  [data-theme="dark"] .cred { background: rgba(52,196,142,.12); border-color: rgba(52,196,142,.25); color: var(--emerald-dark); }
+  [data-theme="dark"] .cred.gold { background: rgba(217,173,79,.12); border-color: rgba(217,173,79,.25); color: var(--gold); }
+  [data-theme="dark"] .tag { background: var(--bg-alt); border-color: var(--line); color: var(--ink-soft); }
+  [data-theme="dark"] .avatar { box-shadow: 0 18px 40px rgba(0,0,0,.5), 0 0 0 5px rgba(255,255,255,.08); }
+</style>
