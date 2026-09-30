@@ -1,0 +1,80 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CTASection from '../../components/CTASection.astro';
+import ProcessStep from '../../components/ProcessStep.astro';
+import { services } from '../../data/services.js';
+import { process } from '../../data/process.js';
+
+const service = services.find(s => s.slug === 'medical');
+---
+
+<Layout
+  title="Medical Travel to China | Lantern Bridge"
+  description="End-to-end coordination for Indonesian patients seeking treatment at China's leading hospitals — interpreted, scheduled, and supervised by a bilingual team on the ground."
+>
+
+  <section class="page-head">
+    <div class="container">
+      <div class="kicker">
+        <span class="txt-en">{service.num} — {service.category.en}</span>
+        <span class="txt-id">{service.num} — {service.category.id}</span>
+      </div>
+      <h1>
+        <span class="txt-en">{service.title.en}</span>
+        <span class="txt-id">{service.title.id}</span>
+      </h1>
+      <p class="lead">
+        <span class="txt-en">{service.description.en}</span>
+        <span class="txt-id">{service.description.id}</span>
+      </p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="container">
+      <div class="detail-grid">
+        <div>
+          <h2>
+            <span class="txt-en">What's included</span>
+            <span class="txt-id">Yang termasuk</span>
+          </h2>
+          <ul class="detail-list">
+            {service.bullets.map(b => (
+              <li>
+                <span class="txt-en">{b.en}</span>
+                <span class="txt-id">{b.id}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h2>
+            <span class="txt-en">Our 4-step process</span>
+            <span class="txt-id">Proses 4 langkah kami</span>
+          </h2>
+          <div class="process-mini">
+            {process.map(step => <ProcessStep step={step} />)}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection />
+
+</Layout>
+
+<style>
+  .page-head { padding: 130px 0 40px; }
+  .lead { font-size: 17px; color: var(--muted); max-width: 700px; margin-top: 12px; }
+  .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+  .detail-list { list-style: none; margin-top: 20px; }
+  .detail-list li { padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 15px; color: var(--ink-soft); }
+  .detail-list li:before { content: "✓"; color: var(--emerald-dark); font-weight: 700; margin-right: 10px; }
+  .process-mini { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 20px; }
+  @media (max-width: 760px) {
+    .page-head { padding: 118px 0 30px; }
+    .detail-grid { grid-template-columns: 1fr; gap: 32px; }
+    .process-mini { grid-template-columns: 1fr; }
+  }
+</style>
