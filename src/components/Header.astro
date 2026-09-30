@@ -1,0 +1,39 @@
+---
+// Header component — fixed navigation with logo, links, and utility toggles
+---
+
+<header id="siteHeader">
+  <div class="container nav">
+    <a href="/" class="logo" aria-label="Lantern Bridge — home">
+      <svg class="lb-mark" width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M3 21 Q16 6 29 21" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+        <path d="M2 21 H30" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+        <path d="M16 21 V22.4" stroke="currentColor" stroke-width="1.8"/>
+        <rect x="13.6" y="22.2" width="4.8" height="1.6" rx=".8" fill="#c99a3f"/>
+        <rect x="11.8" y="23.8" width="8.4" height="7" rx="2.8" fill="#d0442e"/>
+        <rect x="13.6" y="30.8" width="4.8" height="1.6" rx=".8" fill="#c99a3f"/>
+      </svg>
+      Lantern&nbsp;<span class="lb-em">Bridge</span>
+    </a>
+    <nav class="nav-links" id="primaryNav" aria-label="Primary">
+      <a href="/services/"><span class="txt-en">Services</span><span class="txt-id">Layanan</span></a>
+      <a href="/results/"><span class="txt-en">Results</span><span class="txt-id">Hasil</span></a>
+      <a href="/team/"><span class="txt-en">Our Team</span><span class="txt-id">Tim Kami</span></a>
+      <a href="/process/"><span class="txt-en">How We Work</span><span class="txt-id">Cara Kami Kerja</span></a>
+      <a href="/contact/" class="nav-cta"><span class="txt-en">Free consultation</span><span class="txt-id">Konsultasi gratis</span></a>
+    </nav>
+    <div class="nav-tools">
+      <button class="theme-toggle" type="button" id="themeToggle" aria-label="Toggle dark mode" aria-pressed="false" title="Toggle dark / light mode">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <div class="lang-toggle" role="group" aria-label="Language / Bahasa">
+        <button type="button" class="lang-btn is-active" data-set-lang="en" aria-pressed="true">EN</button>
+        <button type="button" class="lang-btn" data-set-lang="id" aria-pressed="false">ID</button>
+      </div>
+      <button class="menu-btn" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primaryNav">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>

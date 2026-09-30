@@ -1,0 +1,130 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ProofBlock from '../../components/ProofBlock.astro';
+import Testimonial from '../../components/Testimonial.astro';
+import CTASection from '../../components/CTASection.astro';
+import { universities, hubs, stats } from '../../data/proof.js';
+import { testimonials } from '../../data/testimonials.js';
+---
+
+<Layout
+  title="Results — Universities, Hubs & Testimonials | Lantern Bridge"
+  description="Real universities, real factories, real Indonesian clients. See where our students study, where our teams operate, and what our clients say."
+>
+
+  <section class="page-head">
+    <div class="container">
+      <div class="kicker">
+        <span class="txt-en">Track record</span>
+        <span class="txt-id">Rekam jejak</span>
+      </div>
+      <h1>
+        <span class="txt-en">Proof, not promises.</span>
+        <span class="txt-id">Bukti, bukan janji.</span>
+      </h1>
+      <p class="lead">
+        <span class="txt-en">Real universities, real factories, real Indonesian clients — this is what crossing the bridge looks like.</span>
+        <span class="txt-id">Universitas nyata, pabrik nyata, klien Indonesia nyata — inilah wujud penyeberangan bersama kami.</span>
+      </p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="container">
+      <div class="stats reveal">
+        {stats.map(s => (
+          <div class="stat">
+            <strong>{s.value}</strong>
+            <span>
+              <span class="txt-en">{s.label.en}</span>
+              <span class="txt-id">{s.label.id}</span>
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <ProofBlock titleEn="Universities our students attend" titleId="Universitas tempat mahasiswa kami belajar">
+        <div class="unis">
+          {universities.map(u => (
+            <div class="uni">
+              <span class="uni-cn">{u.code}</span>
+              <span class="uni-name">{u.name}</span>
+            </div>
+          ))}
+        </div>
+        <p class="foot-note">
+          <span class="txt-en">A selection from our 20+ university network — spanning admissions, scholarships and joint programs.</span>
+          <span class="txt-id">Sebagian dari 20+ jaringan universitas kami — mencakup pendaftaran, beasiswa, dan program bersama.</span>
+        </p>
+      </ProofBlock>
+
+      <ProofBlock titleEn="Where we have boots on the ground" titleId="Kota industri tempat tim kami berada">
+        <div class="hubs">
+          {hubs.map(h => (
+            <div class="hub">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+              <div>
+                <b>{h.name}</b>
+                <span>
+                  <span class="txt-en">{h.description.en}</span>
+                  <span class="txt-id">{h.description.id}</span>
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </ProofBlock>
+
+      <ProofBlock titleEn="What our clients say" titleId="Kata klien kami">
+        <div class="quotes">
+          {testimonials.map(t => <Testimonial testimonial={t} />)}
+        </div>
+      </ProofBlock>
+    </div>
+  </section>
+
+  <CTASection />
+
+</Layout>
+
+<style>
+  .page-head { padding: 130px 0 40px; }
+  .lead { font-size: 17px; color: var(--muted); max-width: 640px; margin-top: 12px; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); border-radius: var(--radius-lg); background: #fff; box-shadow: var(--shadow-sm); overflow: hidden; }
+  .stat { padding: 26px 24px; border-left: 1px solid var(--line); }
+  .stat:first-child { border-left: 0; }
+  .stat strong { display: block; font-size: 34px; line-height: 1.1; color: var(--navy); font-weight: 600; margin-bottom: 5px; }
+  .stat span { font-size: 13.5px; color: var(--muted); }
+  .unis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .uni { display: flex; align-items: center; gap: 14px; background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; min-height: 72px; }
+  .uni-cn { width: 44px; height: 44px; flex: none; border-radius: 10px; background: var(--navy); color: #fff; display: grid; place-items: center; font-size: 15px; font-weight: 600; font-family: var(--font-head); }
+  .uni-name { font-size: 13.5px; font-weight: 600; color: var(--ink); line-height: 1.3; }
+  .hubs { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  .hub { display: flex; gap: 11px; align-items: flex-start; background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 16px 14px; }
+  .hub svg { flex: none; color: var(--emerald-dark); margin-top: 2px; }
+  .hub b { display: block; color: var(--navy); font-size: 14.5px; }
+  .hub span { font-size: 12.5px; color: var(--muted); line-height: 1.4; }
+  .quotes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .foot-note { font-size: 13px; color: var(--muted); margin-top: 16px; }
+  [data-theme="dark"] .stat, [data-theme="dark"] .uni, [data-theme="dark"] .hub, [data-theme="dark"] .stats { background: #11202f; }
+  @media (max-width: 1020px) {
+    .stats { grid-template-columns: 1fr 1fr; }
+    .stat:nth-child(odd) { border-left: 0; }
+    .stat:nth-child(n+3) { border-top: 1px solid var(--line); }
+    .unis { grid-template-columns: repeat(2, 1fr); }
+    .hubs { grid-template-columns: repeat(3, 1fr); }
+    .quotes { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 760px) {
+    .page-head { padding: 118px 0 30px; }
+    .stats { grid-template-columns: 1fr; }
+    .stat { border-left: 0; border-top: 1px solid var(--line); }
+    .stat:first-child { border-top: 0; }
+    .unis { grid-template-columns: 1fr; }
+    .hubs { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>

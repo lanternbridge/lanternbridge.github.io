@@ -1,0 +1,48 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Page Not Found | Lantern Bridge"
+  description="The page you are looking for has moved or no longer exists. Return to Lantern Bridge home."
+>
+
+  <section class="notfound">
+    <div class="container">
+      <div class="notfound-inner">
+        <div class="notfound-code">404</div>
+        <h1>
+          <span class="txt-en">This crossing doesn't exist.</span>
+          <span class="txt-id">Penyeberangan ini tidak ada.</span>
+        </h1>
+        <p>
+          <span class="txt-en">The page you're looking for has moved or never existed. Let's get you back on the bridge.</span>
+          <span class="txt-id">Halaman yang Anda cari telah dipindahkan atau tidak pernah ada. Mari kembali ke jembatan.</span>
+        </p>
+        <div class="notfound-actions">
+          <a class="btn btn-primary" href="/">
+            <span class="txt-en">← Back to home</span>
+            <span class="txt-id">← Kembali ke beranda</span>
+          </a>
+          <a class="btn btn-ghost" href="/contact/">
+            <span class="txt-en">Contact us</span>
+            <span class="txt-id">Hubungi kami</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .notfound { padding: 180px 0 120px; min-height: 70vh; display: flex; align-items: center; }
+  .notfound-inner { max-width: 620px; margin: 0 auto; text-align: center; }
+  .notfound-code { font-family: var(--font-head); font-size: clamp(80px, 14vw, 160px); line-height: 1; font-weight: 600; color: var(--emerald-dark); letter-spacing: -.04em; margin-bottom: 12px; }
+  .notfound h1 { margin-bottom: 16px; }
+  .notfound p { color: var(--muted); font-size: 16px; max-width: 480px; margin: 0 auto 32px; }
+  .notfound-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  @media (max-width: 760px) {
+    .notfound { padding: 140px 0 80px; }
+  }
+</style>
