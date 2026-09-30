@@ -34,7 +34,17 @@ import { team } from '../data/team.js';
   <section class="band">
     <div class="container">
       <div class="team">
-        {team.map(member => <TeamMember member={member} />)}
+                {team.map(member => (
+          <TeamMember
+            member={member}
+            photoSrc={
+              member.id === 'david-li'         ? '/team/david.jpg'  :
+              member.id === 'minhaz-ahmed'      ? '/team/Minhaz.jpg' :
+              member.id === 'amrih-patriotomo'  ? '/team/Amrih.jpg'  :
+              undefined
+            }
+          />
+        ))}
       </div>
     </div>
   </section>
