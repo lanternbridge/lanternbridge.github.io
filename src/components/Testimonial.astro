@@ -1,0 +1,44 @@
+---
+interface Testimonial {
+  id: string;
+  initials: string;
+  avatarTone: string;
+  name: string;
+  role: { en: string; id: string };
+  quote: { en: string; id: string };
+}
+interface Props { testimonial: Testimonial; }
+const { testimonial } = Astro.props;
+---
+
+<figure class="quote reveal">
+  <div class="stars" aria-hidden="true">★★★★★<span class="sr-only">Rated 5 out of 5</span></div>
+  <p>
+    <span class="txt-en">"{testimonial.quote.en}"</span>
+    <span class="txt-id">"{testimonial.quote.id}"</span>
+  </p>
+  <figcaption class="quote-by">
+    <span class={`qavatar ${testimonial.avatarTone}`}>{testimonial.initials}</span>
+    <div>
+      <b>{testimonial.name}</b>
+      <span>
+        <span class="txt-en">{testimonial.role.en}</span>
+        <span class="txt-id">{testimonial.role.id}</span>
+      </span>
+    </div>
+  </figcaption>
+</figure>
+
+<style>
+  .quote { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; display: flex; flex-direction: column; gap: 16px; }
+  .stars { color: var(--gold); letter-spacing: 3px; font-size: 14px; }
+  .quote > p { font-size: 14.5px; color: var(--ink-soft); flex: 1; }
+  .quote-by { display: flex; align-items: center; gap: 12px; border-top: 1px solid var(--line); padding-top: 16px; }
+  .qavatar { width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; color: #fff; font-weight: 800; font-size: 13px; flex: none; font-family: var(--font-body); }
+  .qa-1 { background: var(--navy); }
+  .qa-2 { background: var(--emerald); }
+  .qa-3 { background: var(--gold); }
+  .quote-by b { display: block; font-size: 14px; color: var(--navy); }
+  .quote-by span { font-size: 12.5px; color: var(--muted); }
+  [data-theme="dark"] .quote { background: #11202f; }
+</style>
